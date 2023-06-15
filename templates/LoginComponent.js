@@ -6,7 +6,7 @@ export default class LoginComponent extends Component {
 
     // Store Input State of Login Component.
     stateIO = {
-        mailIO: "",
+        mailIO: "your@email.com", // Define the fixed value here
         passwordIO: ""
     }
 
@@ -18,8 +18,16 @@ export default class LoginComponent extends Component {
             </View>
             <Text style={DarkTheme.description}>Modern Talking is our Future.</Text>
             <View style={DarkTheme.form}>
-                <TextInput style={DarkTheme.input} placeholder="Email"/>
-                <TextInput style={DarkTheme.input} placeholder="Password" type="password"/>
+                <TextInput 
+                    style={DarkTheme.input} 
+                    placeholder="Email" 
+                    defaultValue={this.stateIO.mailIO} // Use the default value here
+                />
+                <TextInput 
+                    style={DarkTheme.input} 
+                    placeholder="Password" 
+                    secureTextEntry={true} // This should be used instead of type="password"
+                />
             </View>
             <Button style={DarkTheme.button} title="Login"/>
             <View style={DarkTheme.row}>

@@ -5,9 +5,14 @@ import DarkTheme from "./themes/DarkTheme";
 export default class LoginComponent extends Component {
 
     // Store Input State of Login Component.
-    stateIO = {
-        mailIO: "your@email.com", // Define the fixed value here
+    state = {
+        mailIO: "",
         passwordIO: ""
+    }
+
+    // Handle login button press
+    handleLogin = () => {
+        this.setState({ mailIO: "", passwordIO: "" }); // Reset values
     }
 
     render() {
@@ -20,16 +25,23 @@ export default class LoginComponent extends Component {
             <View style={DarkTheme.form}>
                 <TextInput 
                     style={DarkTheme.input} 
-                    placeholder="Email" 
-                    defaultValue={this.stateIO.mailIO} // Use the default value here
+                    placeholder="Email"
+                    value={this.state.mailIO}
+                    onChangeText={(text) => this.setState({ mailIO: text })}
                 />
                 <TextInput 
                     style={DarkTheme.input} 
                     placeholder="Password" 
-                    secureTextEntry={true} // This should be used instead of type="password"
+                    secureTextEntry={true}
+                    value={this.state.passwordIO}
+                    onChangeText={(text) => this.setState({ passwordIO: text })}
                 />
             </View>
-            <Button style={DarkTheme.button} title="Login"/>
+            <Button 
+                style={DarkTheme.button} 
+                title="Login" 
+                onPress={this.handleLogin} 
+            />
             <View style={DarkTheme.row}>
                 <Text>Don't Have An Account?</Text>
                 <Text style={DarkTheme.link}>Sign Up</Text>
